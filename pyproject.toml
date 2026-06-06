@@ -1,0 +1,42 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "sarvam-cli"
+version = "0.1.0"
+description = "Developer-first command-line interface for Sarvam AI."
+readme = "README.md"
+requires-python = ">=3.10"
+authors = [
+  { name = "Sarvam" }
+]
+license = "MIT"
+classifiers = [
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3 :: Only",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: 3.13",
+  "Programming Language :: Python :: 3.14",
+]
+dependencies = [
+  "rich>=13.7,<15.0",
+]
+
+[project.optional-dependencies]
+voice = [
+  "numpy>=1.26,<3.0",
+  "sounddevice>=0.4.7,<1.0",
+  "soundfile>=0.12.1,<1.0",
+]
+
+[project.scripts]
+sarvam = "sarvam_cli.cli:main"
+
+[tool.setuptools]
+package-dir = { "" = "src" }
+
+[tool.setuptools.packages.find]
+where = ["src"]

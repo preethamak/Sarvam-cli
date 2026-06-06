@@ -1,0 +1,208 @@
+Metadata-Version: 2.4
+Name: sarvam-cli
+Version: 0.1.0
+Summary: Developer-first command-line interface for Sarvam AI.
+Author: Sarvam
+License-Expression: MIT
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3 :: Only
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Programming Language :: Python :: 3.12
+Classifier: Programming Language :: Python :: 3.13
+Classifier: Programming Language :: Python :: 3.14
+Requires-Python: >=3.10
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: rich<15.0,>=13.7
+Provides-Extra: voice
+Requires-Dist: numpy<3.0,>=1.26; extra == "voice"
+Requires-Dist: sounddevice<1.0,>=0.4.7; extra == "voice"
+Requires-Dist: soundfile<1.0,>=0.12.1; extra == "voice"
+Dynamic: license-file
+
+# Sarvam CLI
+
+A developer-first command-line interface for Sarvam AI.
+
+Sarvam CLI brings speech, translation, chat, and voice capabilities directly into the terminal with an agent-style interface designed for fast iteration.
+
+## Why?
+
+Sarvam provides powerful APIs for speech, translation, and multilingual AI. Developers often need to write boilerplate code before they can experiment with those capabilities. Sarvam CLI removes that friction by exposing core Sarvam functionality through simple terminal commands.
+
+## Features
+
+### Home
+
+Open the CLI with no arguments to get a guided landing screen with suggested flows.
+
+```bash
+sarvam
+sarvam help
+```
+
+### Chat
+
+Start an interactive AI chat session directly from the terminal with a richer terminal UX.
+
+```bash
+sarvam chat
+```
+
+Inside chat, use:
+
+```text
+/help   Show session commands
+/stats  Show session stats
+/clear  Reset conversation history
+/exit   Leave the session
+```
+
+### Voice Chat
+
+Speak into your microphone and receive spoken responses.
+
+```bash
+sarvam chat --voice --lang kn-IN
+```
+
+Flow:
+
+```text
+Microphone
+    ↓
+Speech-to-Text
+    ↓
+Sarvam Chat
+    ↓
+Text-to-Speech
+    ↓
+Speaker
+```
+
+### Speech-to-Text
+
+Transcribe audio files.
+
+```bash
+sarvam transcribe audio.wav
+```
+
+### Translation
+
+Translate text between supported languages.
+
+```bash
+sarvam translate input.txt --to hi-IN
+```
+
+### Text-to-Speech
+
+Convert text into natural speech.
+
+```bash
+sarvam speak "Hello World" --lang hi-IN
+```
+
+### Language Detection
+
+Detect the language of a text file.
+
+```bash
+sarvam detect-language notes.txt
+```
+
+### Configuration
+
+Store and manage API credentials.
+
+```bash
+sarvam config set-api-key
+```
+
+## Installation
+
+```bash
+pip install sarvam-cli
+```
+
+For microphone and speaker support:
+
+```bash
+pip install "sarvam-cli[voice]"
+```
+
+## Configuration
+
+Set your Sarvam API key:
+
+```bash
+sarvam config set-api-key
+```
+
+Set a custom API base URL if you need to point the CLI at a different Sarvam environment:
+
+```bash
+sarvam config set-base-url https://api.sarvam.ai
+```
+
+Or use an environment variable:
+
+```bash
+export SARVAM_API_KEY=your_api_key
+```
+
+You can also override config for a single command without changing saved state:
+
+```bash
+sarvam --api-key your_api_key --base-url https://api.sarvam.ai chat "Hello"
+```
+
+Stored configuration is per-user. By default the CLI writes to `~/.config/sarvam/config.json`. You can override that location with `SARVAM_CONFIG_DIR` or standard `XDG_CONFIG_HOME`.
+
+## Experience
+
+Sarvam CLI now includes:
+
+- Rich terminal panels for chat responses and results
+- Agent-style interactive chat with slash commands
+- Session metadata and stats
+- Status spinners for network-bound operations
+- Cleaner config and error rendering
+
+## Example Commands
+
+### Chat
+
+```bash
+sarvam chat
+```
+
+### Voice Chat
+
+```bash
+sarvam chat --voice --lang hi-IN
+```
+
+### Transcription
+
+```bash
+sarvam transcribe meeting.wav
+```
+
+### Translation
+
+```bash
+sarvam translate notes.txt --to kn-IN
+```
+
+### Speech
+
+```bash
+sarvam speak "Welcome to Sarvam AI" --lang en-IN
+```
+
+## Motivation
+
+Sarvam CLI aims to make multilingual AI accessible from any terminal. Instead of writing setup code for every experiment, developers can immediately explore speech, translation, and conversational AI through a single tool.

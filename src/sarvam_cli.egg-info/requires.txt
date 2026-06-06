@@ -1,0 +1,6 @@
+rich<15.0,>=13.7
+
+[voice]
+numpy<3.0,>=1.26
+sounddevice<1.0,>=0.4.7
+soundfile<1.0,>=0.12.1

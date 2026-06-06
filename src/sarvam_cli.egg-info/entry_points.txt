@@ -1,0 +1,2 @@
+[console_scripts]
+sarvam = sarvam_cli.cli:main
