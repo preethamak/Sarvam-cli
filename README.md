@@ -2,7 +2,7 @@
 
 Agent-style terminal interface for Sarvam AI.
 
-Sarvam CLI brings chat, voice, translation, transcription, language detection, and speech generation into a clean terminal workflow. It is designed to feel closer to a modern coding agent CLI than a thin API wrapper.
+Sarvam CLI brings chat, voice, translation, transcription, language detection, and speech generation into a clean terminal workflow. It is designed to feel closer to a modern coding agent CLI than a thin API wrapper
 
 ## Why
 
